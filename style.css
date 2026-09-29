@@ -1,0 +1,1231 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fffafb;
+    color: #222;
+    overflow-x: hidden;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.oculto {
+    display: none !important;
+}
+
+
+/* =========================
+   APP
+========================= */
+
+.app {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    padding: 25px 18px 100px;
+}
+
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.saludo {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.encabezado h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+#fecha {
+    color: #888;
+    font-size: 13px;
+    text-transform: capitalize;
+}
+
+.configuracion {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 13px;
+    background: #f3edf0;
+    font-size: 20px;
+}
+
+
+/* =========================
+   RESUMEN
+========================= */
+
+.resumen {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.tarjeta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 17px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .05);
+}
+
+.tarjeta > span {
+    font-size: 24px;
+}
+
+.tarjeta small {
+    display: block;
+    color: #888;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.tarjeta strong {
+    font-size: 17px;
+}
+
+
+/* =========================
+   SECCIONES
+========================= */
+
+.seccion {
+    margin-bottom: 30px;
+}
+
+.titulo-seccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.titulo-seccion h2 {
+    font-size: 21px;
+}
+
+.subtitulo {
+    color: #777;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.boton-agregar {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 12px;
+    background: #222;
+    color: white;
+    font-size: 23px;
+}
+
+
+/* =========================
+   BOTONES
+========================= */
+
+.boton-principal {
+    width: 100%;
+    border: none;
+    padding: 14px;
+    border-radius: 13px;
+    background: #222;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.boton-principal:hover {
+    opacity: .9;
+}
+
+
+/* =========================
+   VACÍOS
+========================= */
+
+.vacio,
+.tarea-vacia,
+.agenda-vacia {
+    text-align: center;
+    color: #888;
+    padding: 22px 10px;
+}
+
+
+/* =========================
+   RESUMEN INTELIGENTE
+========================= */
+
+.resumen-inteligente-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.resumen-inteligente-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .04);
+}
+
+.resumen-inteligente-icono {
+    font-size: 22px;
+}
+
+.resumen-inteligente-texto {
+    flex: 1;
+}
+
+.resumen-inteligente-texto strong {
+    display: block;
+    font-size: 14px;
+}
+
+.resumen-inteligente-texto span {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+
+/* =========================
+   HOY TENGO QUE
+========================= */
+
+.lista-prioridades {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.prioridad-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: white;
+    border-radius: 15px;
+    border-left: 4px solid #222;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .04);
+}
+
+.prioridad-item.urgente {
+    border-left-color: #d93636;
+}
+
+.prioridad-item.alta {
+    border-left-color: #e58a25;
+}
+
+.prioridad-icono {
+    font-size: 21px;
+}
+
+.prioridad-info {
+    flex: 1;
+}
+
+.prioridad-info strong {
+    display: block;
+    font-size: 14px;
+}
+
+.prioridad-info span {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+
+/* =========================
+   TAREAS
+========================= */
+
+.lista-tareas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tarea-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px;
+    background: #f7f4f6;
+    border-radius: 15px;
+}
+
+.tarea-item.completada {
+    opacity: .55;
+}
+
+.checkbox-tarea {
+    width: 27px;
+    height: 27px;
+    border-radius: 8px;
+    border: 2px solid #aaa;
+    background: white;
+    cursor: pointer;
+}
+
+.tarea-info {
+    flex: 1;
+}
+
+.tarea-nombre {
+    display: block;
+}
+
+.tarea-item.completada .tarea-nombre {
+    text-decoration: line-through;
+}
+
+.tarea-meta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.tarea-meta span {
+    color: #777;
+    font-size: 12px;
+}
+
+.eliminar-tarea {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+}
+
+
+/* =========================
+   AGENDA
+========================= */
+
+.selector-vista {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.selector-vista button {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    background: #f3f0f2;
+    font-weight: bold;
+}
+
+.selector-vista button.vista-activa {
+    background: #222;
+    color: white;
+}
+
+.selector-fecha {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.selector-fecha button {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 10px;
+    background: #f3f0f2;
+    font-size: 22px;
+}
+
+#fechaAgenda {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 15px;
+    background: white;
+}
+
+.lista-agenda {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.evento-agenda {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #f7f4f6;
+    border-radius: 15px;
+}
+
+.hora-evento {
+    min-width: 55px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.info-evento {
+    flex: 1;
+}
+
+.info-evento strong {
+    display: block;
+}
+
+.info-evento span {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.eliminar-evento {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+}
+
+.lista-semana {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dia-semana {
+    padding: 15px;
+    border-radius: 18px;
+    background: #f7f4f6;
+}
+
+.dia-semana h3 {
+    margin-bottom: 12px;
+    text-transform: capitalize;
+}
+
+.dia-semana-hoy {
+    border: 2px solid #222;
+}
+
+.actividad-semana {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+    margin-top: 8px;
+}
+
+.actividad-semana-hora {
+    min-width: 45px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.actividad-semana-info {
+    flex: 1;
+}
+
+.actividad-semana-info strong {
+    display: block;
+    font-size: 14px;
+}
+
+.actividad-semana-info span {
+    display: block;
+    font-size: 12px;
+    color: #777;
+    margin-top: 3px;
+}
+
+
+/* =========================
+   FINANZAS
+========================= */
+
+.resumen-finanzas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.finanza-card {
+    padding: 15px;
+    border-radius: 16px;
+    background: #f7f4f6;
+}
+
+.finanza-card span {
+    display: block;
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 7px;
+}
+
+.finanza-card strong {
+    font-size: 20px;
+}
+
+.texto-ingreso {
+    color: #267a45;
+}
+
+.texto-gasto {
+    color: #b33a3a;
+}
+
+.botones-finanzas {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.boton-finanza {
+    flex: 1;
+    border: none;
+    padding: 13px;
+    border-radius: 12px;
+    background: #f3f0f2;
+    font-weight: bold;
+}
+
+.movimientos-header h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.movimientos-titulo {
+    margin-top: 20px;
+}
+
+.lista-movimientos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.movimiento-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px;
+    background: #f7f4f6;
+    border-radius: 15px;
+}
+
+.movimiento-info {
+    flex: 1;
+}
+
+.movimiento-info strong {
+    display: block;
+}
+
+.movimiento-info span {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.movimiento-monto {
+    font-weight: bold;
+}
+
+.movimiento-ingreso {
+    color: #267a45;
+}
+
+.movimiento-gasto {
+    color: #b33a3a;
+}
+
+.eliminar-movimiento {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+}
+
+
+/* =========================
+   CATEGORÍAS
+========================= */
+
+.lista-categorias {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.categoria-item {
+    padding: 14px;
+    background: #f7f4f6;
+    border-radius: 15px;
+}
+
+.categoria-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.categoria-header span {
+    font-size: 14px;
+}
+
+.categoria-header strong {
+    font-size: 14px;
+}
+
+.categoria-barra {
+    width: 100%;
+    height: 9px;
+    background: #e5e1e3;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.categoria-progreso {
+    height: 100%;
+    background: #222;
+    border-radius: 20px;
+    transition: width .3s ease;
+}
+
+.categoria-item small {
+    display: block;
+    margin-top: 6px;
+    color: #777;
+    font-size: 11px;
+}
+
+
+/* =========================
+   METAS
+========================= */
+
+.lista-metas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.meta-item {
+    padding: 16px;
+    background: #f7f4f6;
+    border-radius: 16px;
+}
+
+.meta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.meta-nombre {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.meta-porcentaje {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.meta-barra {
+    width: 100%;
+    height: 10px;
+    background: #e5e1e3;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 12px 0 8px;
+}
+
+.meta-progreso {
+    height: 100%;
+    background: #222;
+    border-radius: 20px;
+    transition: width .3s ease;
+}
+
+.meta-datos {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #777;
+}
+
+.meta-acciones {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.eliminar-meta {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+}
+
+
+/* =========================
+   MODALES
+========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 11000;
+}
+
+.modal-contenido {
+    width: 100%;
+    max-width: 450px;
+    background: white;
+    padding: 25px;
+    border-radius: 25px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.modal-header p {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.modal-header h2 {
+    font-size: 22px;
+}
+
+.modal-header button {
+    border: none;
+    background: #f3f0f2;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.modal-contenido label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.modal-contenido input,
+.modal-contenido select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    background: white;
+}
+
+
+/* =========================
+   PIN
+========================= */
+
+.pantalla-bloqueo {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #fffafb;
+}
+
+.bloqueo {
+    width: 100%;
+    max-width: 360px;
+    background: white;
+    padding: 35px 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, .08);
+}
+
+.icono-bloqueo {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.bloqueo h1 {
+    margin-bottom: 8px;
+}
+
+.bloqueo p {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.bloqueo input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+
+/* =========================
+   CONFIGURACIÓN
+========================= */
+
+.panel-configuracion {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .35);
+    z-index: 12000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.panel-config-contenido {
+    width: 100%;
+    max-width: 450px;
+    background: white;
+    padding: 25px;
+    border-radius: 25px;
+}
+
+.config-opcion {
+    background: #f7f4f6;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.config-opcion strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.config-opcion p {
+    color: #777;
+    font-size: 13px;
+}
+
+
+/* =========================
+   NAVEGACIÓN
+========================= */
+
+.navegacion {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 700px;
+    padding: 10px 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+    background: rgba(255, 255, 255, .96);
+    border-top: 1px solid #eee;
+    backdrop-filter: blur(10px);
+    z-index: 9000;
+}
+
+.navegacion button {
+    border: none;
+    background: transparent;
+    padding: 7px;
+    font-size: 19px;
+    border-radius: 12px;
+}
+
+.navegacion button:hover {
+    background: #f5f0f2;
+}
+
+.navegacion span {
+    display: block;
+    font-size: 10px;
+    margin-top: 2px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 450px) {
+
+    .app {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .encabezado h1 {
+        font-size: 27px;
+    }
+
+    .tarjeta {
+        padding: 13px;
+    }
+
+    .tarjeta strong {
+        font-size: 15px;
+    }
+
+    .resumen {
+        gap: 8px;
+    }
+
+}
+
+/* =========================================================
+   LÍMITES FINANCIEROS
+   ========================================================= */
+
+.alertas-financieras {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.limite-item {
+    padding: 16px;
+    background: #f7f4f6;
+    border-radius: 16px;
+}
+
+.limite-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.limite-nombre {
+    font-weight: bold;
+}
+
+.limite-datos {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #777;
+}
+
+.limite-barra {
+    width: 100%;
+    height: 10px;
+    background: #e5e1e3;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 12px 0 8px;
+}
+
+.limite-progreso {
+    height: 100%;
+    border-radius: 20px;
+    background: #222;
+    transition: width .3s ease;
+}
+
+.limite-alerta {
+    margin-top: 10px;
+    padding: 9px 11px;
+    border-radius: 10px;
+    background: #fff3d6;
+    font-size: 13px;
+}
+
+.limite-excedido {
+    background: #ffe1e1;
+}
+
+.limite-acciones {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.eliminar-limite {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   ORGANIZACIÓN INTELIGENTE
+   ========================================================= */
+
+.lista-prioridades {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.prioridad-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: #f7f4f6;
+    border-radius: 15px;
+}
+
+.prioridad-item.urgente {
+    border-left: 4px solid #d94b4b;
+}
+
+.prioridad-item.alta {
+    border-left: 4px solid #d98b3d;
+}
+
+.prioridad-icono {
+    font-size: 21px;
+}
+
+.prioridad-info {
+    flex: 1;
+}
+
+.prioridad-info strong {
+    display: block;
+    font-size: 14px;
+}
+
+.prioridad-info span {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   RESUMEN INTELIGENTE
+   ========================================================= */
+
+.resumen-inteligente-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.resumen-inteligente-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    background: #f7f4f6;
+    border-radius: 15px;
+}
+
+.resumen-inteligente-icono {
+    font-size: 21px;
+    line-height: 1;
+}
+
+.resumen-inteligente-texto {
+    flex: 1;
+}
+
+.resumen-inteligente-texto strong {
+    display: block;
+    font-size: 14px;
+}
+
+.resumen-inteligente-texto span {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   LÍMITES FINANCIEROS
+   ========================================================= */
+
+.alertas-financieras {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.limite-item {
+    padding: 16px;
+    background: #f7f4f6;
+    border-radius: 16px;
+}
+
+.limite-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.limite-nombre {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.limite-barra {
+    width: 100%;
+    height: 10px;
+    background: #e5e1e3;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 12px 0 8px;
+}
+
+.limite-progreso {
+    height: 100%;
+    background: #222;
+    border-radius: 20px;
+    transition: width .3s ease;
+}
+
+.limite-datos {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12px;
+    color: #777;
+    margin-top: 6px;
+}
+
+.limite-alerta {
+    margin-top: 10px;
+    padding: 9px 11px;
+    border-radius: 10px;
+    background: #fff3d6;
+    font-size: 13px;
+}
+
+.limite-excedido {
+    background: #ffe1e1;
+}
+
+.limite-acciones {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.eliminar-limite {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   BOTONES PEQUEÑOS
+   ========================================================= */
+
+.boton-pequeno {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 12px;
+    background: #f3f0f2;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.boton-pequeno:active {
+    transform: scale(.95);
+}
+
+
+/* =========================================================
+   MEJORAS PARA CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .resumen-finanzas {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .limite-datos {
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .prioridad-item,
+    .resumen-inteligente-item {
+        padding: 13px;
+    }
+
+}

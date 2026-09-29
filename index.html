@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vir App 💗</title>
+
+    <meta
+        name="description"
+        content="App personal de organización, tareas y finanzas de Vir."
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#f3f0f2">
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         BLOQUEO
+         ===================================================== -->
+
+    <div id="pantallaBloqueo" class="pantalla-bloqueo">
+
+        <div class="bloqueo">
+
+            <div class="icono-bloqueo">🔐</div>
+
+            <h1>Hola, Vir 💗</h1>
+
+            <p>Ingresá tu PIN para continuar</p>
+
+            <input
+                type="password"
+                id="pinInput"
+                maxlength="6"
+                inputmode="numeric"
+                placeholder="••••"
+            >
+
+            <button
+                id="btnIngresar"
+                class="boton-principal"
+            >
+                Ingresar
+            </button>
+
+            <p id="mensajePin"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         APP
+         ===================================================== -->
+
+    <main id="app" class="app oculto">
+
+
+        <!-- =================================================
+             ENCABEZADO
+             ================================================= -->
+
+        <header class="encabezado">
+
+            <div>
+
+                <p class="saludo">
+                    Hola, Vir 💗
+                </p>
+
+                <h1>
+                    Mi día
+                </h1>
+
+                <p id="fecha"></p>
+
+            </div>
+
+            <button
+                id="btnConfiguracion"
+                class="configuracion"
+            >
+                ⚙️
+            </button>
+
+        </header>
+
+
+        <!-- =================================================
+             RESUMEN PRINCIPAL
+             ================================================= -->
+
+        <section class="resumen">
+
+            <div class="tarjeta">
+
+                <span>💰</span>
+
+                <div>
+
+                    <small>
+                        Disponible
+                    </small>
+
+                    <strong id="dineroDisponible">
+                        $0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="tarjeta">
+
+                <span>🎯</span>
+
+                <div>
+
+                    <small>
+                        Mis metas
+                    </small>
+
+                    <strong id="metasActivas">
+                        0 activas
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             HOY TENGO QUE
+             ================================================= -->
+
+        <section class="seccion prioridad-seccion">
+
+            <div class="titulo-seccion">
+
+                <div>
+
+                    <h2>
+                        ⭐ Hoy tengo que...
+                    </h2>
+
+                    <p class="subtitulo">
+                        Lo más importante de tu día
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div
+                id="listaPrioridades"
+                class="lista-prioridades"
+            >
+
+                <p class="vacio">
+                    Preparando tu día... 💗
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RESUMEN INTELIGENTE
+             ================================================= -->
+
+        <section class="seccion resumen-seccion">
+
+            <div class="titulo-seccion">
+
+                <div>
+
+                    <h2>
+                        🧠 Mi resumen
+                    </h2>
+
+                    <p class="subtitulo">
+                        Así viene tu día
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div
+                id="resumenInteligente"
+                class="resumen-inteligente-lista"
+            >
+
+                <p class="vacio">
+                    Preparando tu resumen... 💗
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             TAREAS
+             ================================================= -->
+
+        <section
+            class="seccion"
+            id="seccionTareas"
+        >
+
+            <div class="titulo-seccion">
+
+                <div>
+
+                    <h2>
+                        ✅ Tareas
+                    </h2>
+
+                    <p class="subtitulo">
+                        Lo que tengo pendiente
+                    </p>
+
+                </div>
+
+                <button
+                    id="agregarTarea"
+                    class="boton-pequeno"
+                >
+                    +
+                </button>
+
+            </div>
+
+            <div
+                id="listaTareas"
+                class="lista-tareas"
+            >
+
+                <p class="tarea-vacia">
+                    No tenés tareas pendientes 🎉
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             AGENDA
+             ================================================= -->
+
+        <section
+            class="seccion"
+            id="seccionAgenda"
+        >
+
+            <div class="titulo-seccion">
+
+                <div>
+
+                    <h2>
+                        📅 Agenda
+                    </h2>
+
+                    <p class="subtitulo">
+                        Organizá tus actividades
+                    </p>
+
+                </div>
+
+                <button
+                    id="agregarEvento"
+                    class="boton-pequeno"
+                >
+                    +
+                </button>
+
+            </div>
+
+
+            <div class="selector-vista">
+
+                <button
+                    id="btnVistaDia"
+                    class="vista-activa"
+                >
+                    Día
+                </button>
+
+                <button id="btnVistaSemana">
+                    Semana
+                </button>
+
+            </div>
+
+
+            <div id="vistaDia">
+
+                <div class="selector-fecha">
+
+                    <button id="diaAnterior">
+                        ‹
+                    </button>
+
+                    <input
+                        type="date"
+                        id="fechaAgenda"
+                    >
+
+                    <button id="diaSiguiente">
+                        ›
+                    </button>
+
+                </div>
+
+                <div
+                    id="listaAgenda"
+                    class="lista-agenda"
+                ></div>
+
+            </div>
+
+
+            <div
+                id="vistaSemana"
+                class="lista-semana oculto"
+            ></div>
+
+        </section>
+
+
+        <!-- =================================================
+             FINANZAS
+             ================================================= -->
+
+        <section
+            class="seccion"
+            id="seccionFinanzas"
+        >
+
+            <div class="titulo-seccion">
+
+                <div>
+
+                    <h2>
+                        💰 Finanzas
+                    </h2>
+
+                    <p class="subtitulo">
+                        Controlá tu plata
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="resumen-finanzas">
+
+                <div class="finanza-card">
+
+                    <span>
+                        Ingresos
+                    </span>
+
+                    <strong id="totalIngresos">
+                        $0
+                    </strong>
+
+                </div>
+
+
+                <div class="finanza-card">
+
+                    <span>
+                        Gastos
+                    </span>
+
+                    <strong id="totalGastos">
+                        $0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="botones-finanzas">
+
+                <button
+                    id="agregarIngreso"
+                    class="boton-finanza"
+                >
+                    ➕ Ingreso
+                </button>
+
+                <button
+                    id="agregarGasto"
+                    class="boton-finanza"
+                >
+                    ➖ Gasto
+                </button>
+
+            </div>
+
+
+            <!-- CATEGORÍAS -->
+
+            <div class="movimientos-header">
+
+                <h3>
+                    📊 Gastos por categoría
+                </h3>
+
+            </div>
+
+            <div
+                id="listaCategorias"
+                class="lista-categorias"
+            >
+
+                <p class="vacio">
+                    Todavía no hay gastos para mostrar 📊
+                </p>
+
+            </div>
+
+
+            <!-- MOVIMIENTOS -->
+
+            <div
+                class="movimientos-header"
+                style="margin-top:25px;"
+            >
+
+                <h3>
+                    🧾 Últimos movimientos
+                </h3>
+
+            </div>
+
+            <div
+                id="listaMovimientos"
+                class="lista-movimientos"
+            >
+
+                <p class="vacio">
+                    Todavía no tenés movimientos 💸
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             LÍMITES
+             ================================================= -->
+
+        <section
+            class="seccion"
+            id="seccionLimites"
+        >
+
+            <div class="titulo-seccion">
+
+                <div>
+
+                    <h2>
+                        🚦 Mis límites
+                    </h2>
+
+                    <p class="subtitulo">
+                        Para cuidar mejor tu plata
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="alertasFinancieras"
+                class="alertas-financieras"
+            >
+
+                <p class="vacio">
+                    Todavía no configuraste límites 💗
+                </p>
+
+            </div>
+
+
+            <button
+                id="agregarLimite"
+                class="boton-principal"
+            >
+                + Agregar límite
+            </button>
+
+        </section>
+
+
+        <!-- =================================================
+             METAS
+             ================================================= -->
+
+        <section
+            class="seccion"
+            id="seccionMetas"
+        >
+
+            <div class="titulo-seccion">
+
+                <div>
+
+                    <h2>
+                        🎯 Mis metas
+                    </h2>
+
+                    <p class="subtitulo">
+                        Lo que quiero conseguir
+                    </p>
+
+                </div>
+
+                <button
+                    id="agregarMeta"
+                    class="boton-pequeno"
+                >
+                    +
+                </button>
+
+            </div>
+
+
+            <div
+                id="listaMetas"
+                class="lista-metas"
+            >
+
+                <p class="vacio">
+                    Todavía no tenés metas 🎯
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             NAVEGACIÓN
+             ================================================= -->
+
+        <nav class="navegacion">
+
+            <button
+                data-scroll="seccionTareas"
+            >
+                ✅
+                <span>
+                    Tareas
+                </span>
+            </button>
+
+            <button
+                data-scroll="seccionAgenda"
+            >
+                📅
+                <span>
+                    Agenda
+                </span>
+            </button>
+
+            <button
+                data-scroll="seccionFinanzas"
+            >
+                💰
+                <span>
+                    Finanzas
+                </span>
+            </button>
+
+            <button
+                data-scroll="seccionMetas"
+            >
+                🎯
+                <span>
+                    Metas
+                </span>
+            </button>
+
+        </nav>
+
+    </main>
+
+
+    <!-- =====================================================
+         CONFIGURACIÓN
+         ===================================================== -->
+
+    <div
+        id="panelConfiguracion"
+        class="modal oculto"
+    >
+
+        <div class="modal-contenido">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        ⚙️ Configuración
+                    </h2>
+
+                    <p>
+                        Ajustes de tu app
+                    </p>
+
+                </div>
+
+                <button id="cerrarConfiguracion">
+                    ✕
+                </button>
+
+            </div>
+
+
+            <button
+                id="bloquearApp"
+                class="boton-finanza"
+            >
+                🔐 Bloquear app
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL EVENTO
+         ===================================================== -->
+
+    <div
+        id="modalEvento"
+        class="modal oculto"
+    >
+
+        <div class="modal-contenido">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        📅 Nueva actividad
+                    </h2>
+
+                    <p>
+                        Organizá algo para tu día
+                    </p>
+
+                </div>
+
+                <button id="cerrarEvento">
+                    ✕
+                </button>
+
+            </div>
+
+
+            <label for="nombreEvento">
+                Actividad
+            </label>
+
+            <input
+                type="text"
+                id="nombreEvento"
+                placeholder="Ej: Clase de taekwondo"
+            >
+
+
+            <label for="fechaEvento">
+                Fecha
+            </label>
+
+            <input
+                type="date"
+                id="fechaEvento"
+            >
+
+
+            <label for="horaEvento">
+                Hora
+            </label>
+
+            <input
+                type="time"
+                id="horaEvento"
+            >
+
+
+            <label for="categoriaEvento">
+                Categoría
+            </label>
+
+            <select id="categoriaEvento">
+
+                <option value="personal">
+                    💗 Personal
+                </option>
+
+                <option value="trabajo">
+                    💼 Trabajo
+                </option>
+
+                <option value="taekwondo">
+                    🥋 Taekwondo
+                </option>
+
+                <option value="estudio">
+                    📚 Estudio
+                </option>
+
+                <option value="salud">
+                    ❤️ Salud
+                </option>
+
+                <option value="otro">
+                    📦 Otro
+                </option>
+
+            </select>
+
+
+            <label for="repeticionEvento">
+                Repetición
+            </label>
+
+            <select id="repeticionEvento">
+
+                <option value="ninguna">
+                    Una vez
+                </option>
+
+                <option value="diaria">
+                    Todos los días
+                </option>
+
+                <option value="semanal">
+                    Todas las semanas
+                </option>
+
+                <option value="laborables">
+                    Días laborables
+                </option>
+
+            </select>
+
+
+            <label for="recordatorioEvento">
+                Recordatorio
+            </label>
+
+            <select id="recordatorioEvento">
+
+                <option value="0">
+                    Sin recordatorio
+                </option>
+
+                <option value="5">
+                    5 minutos antes
+                </option>
+
+                <option value="15">
+                    15 minutos antes
+                </option>
+
+                <option value="30">
+                    30 minutos antes
+                </option>
+
+                <option value="60">
+                    1 hora antes
+                </option>
+
+            </select>
+
+
+            <button
+                id="guardarEvento"
+                class="boton-principal"
+            >
+                Guardar actividad
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL TAREA
+         ===================================================== -->
+
+    <div
+        id="modalTarea"
+        class="modal oculto"
+    >
+
+        <div class="modal-contenido">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        ✅ Nueva tarea
+                    </h2>
+
+                    <p>
+                        Algo que necesitás hacer
+                    </p>
+
+                </div>
+
+                <button id="cerrarTarea">
+                    ✕
+                </button>
+
+            </div>
+
+
+            <label for="nombreTarea">
+                Tarea
+            </label>
+
+            <input
+                type="text"
+                id="nombreTarea"
+                placeholder="Ej: Hacer trabajo de filosofía"
+            >
+
+
+            <label for="prioridadTarea">
+                Prioridad
+            </label>
+
+            <select id="prioridadTarea">
+
+                <option value="normal">
+                    🟢 Normal
+                </option>
+
+                <option value="alta">
+                    🟠 Alta
+                </option>
+
+                <option value="urgente">
+                    🔴 Urgente
+                </option>
+
+            </select>
+
+
+            <label for="fechaTarea">
+                Fecha
+            </label>
+
+            <input
+                type="date"
+                id="fechaTarea"
+            >
+
+
+            <label for="horaTarea">
+                Hora
+            </label>
+
+            <input
+                type="time"
+                id="horaTarea"
+            >
+
+
+            <button
+                id="guardarTarea"
+                class="boton-principal"
+            >
+                Guardar tarea
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL INGRESO
+         ===================================================== -->
+
+    <div
+        id="modalIngreso"
+        class="modal oculto"
+    >
+
+        <div class="modal-contenido">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        ➕ Nuevo ingreso
+                    </h2>
+
+                    <p>
+                        Registrá la plata que recibiste
+                    </p>
+
+                </div>
+
+                <button id="cerrarIngreso">
+                    ✕
+                </button>
+
+            </div>
+
+
+            <label for="montoIngreso">
+                Monto
+            </label>
+
+            <input
+                type="number"
+                id="montoIngreso"
+                placeholder="Ej: 30000"
+                min="1"
+            >
+
+
+            <label for="descripcionIngreso">
+                Descripción
+            </label>
+
+            <input
+                type="text"
+                id="descripcionIngreso"
+                placeholder="Ej: Cuota taekwondo"
+            >
+
+
+            <label for="categoriaIngreso">
+                Categoría
+            </label>
+
+            <select id="categoriaIngreso">
+
+                <option value="trabajo">
+                    💼 Trabajo
+                </option>
+
+                <option value="taekwondo">
+                    🥋 Taekwondo
+                </option>
+
+                <option value="ventas">
+                    🛍️ Ventas
+                </option>
+
+                <option value="regalo">
+                    🎁 Regalo
+                </option>
+
+                <option value="otro">
+                    📦 Otro
+                </option>
+
+            </select>
+
+
+            <button
+                id="guardarIngreso"
+                class="boton-principal"
+            >
+                Guardar ingreso
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL GASTO
+         ===================================================== -->
+
+    <div
+        id="modalGasto"
+        class="modal oculto"
+    >
+
+        <div class="modal-contenido">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        ➖ Nuevo gasto
+                    </h2>
+
+                    <p>
+                        Registrá lo que gastaste
+                    </p>
+
+                </div>
+
+                <button id="cerrarGasto">
+                    ✕
+                </button>
+
+            </div>
+
+
+            <label for="montoGasto">
+                Monto
+            </label>
+
+            <input
+                type="number"
+                id="montoGasto"
+                placeholder="Ej: 5000"
+                min="1"
+            >
+
+
+            <label for="descripcionGasto">
+                Descripción
+            </label>
+
+            <input
+                type="text"
+                id="descripcionGasto"
+                placeholder="Ej: Comida"
+            >
+
+
+            <label for="categoriaGasto">
+                Categoría
+            </label>
+
+            <select id="categoriaGasto">
+
+                <option value="comida">
+                    🍔 Comida
+                </option>
+
+                <option value="transporte">
+                    🚌 Transporte
+                </option>
+
+                <option value="estudio">
+                    📚 Estudio
+                </option>
+
+                <option value="compras">
+                    🛍️ Compras
+                </option>
+
+                <option value="casa">
+                    🏠 Casa
+                </option>
+
+                <option value="ocio">
+                    🎮 Ocio
+                </option>
+
+                <option value="otro">
+                    📦 Otro
+                </option>
+
+            </select>
+
+
+            <button
+                id="guardarGasto"
+                class="boton-principal"
+            >
+                Guardar gasto
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL META
+         ===================================================== -->
+
+    <div
+        id="modalMeta"
+        class="modal oculto"
+    >
+
+        <div class="modal-contenido">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        🎯 Nueva meta
+                    </h2>
+
+                    <p>
+                        Guardá para algo que querés conseguir
+                    </p>
+
+                </div>
+
+                <button id="cerrarMeta">
+                    ✕
+                </button>
+
+            </div>
+
+
+            <label for="nombreMeta">
+                Nombre de la meta
+            </label>
+
+            <input
+                type="text"
+                id="nombreMeta"
+                placeholder="Ej: Mi moto"
+            >
+
+
+            <label for="objetivoMeta">
+                ¿Cuánto necesitás?
+            </label>
+
+            <input
+                type="number"
+                id="objetivoMeta"
+                placeholder="Ej: 1700000"
+                min="1"
+            >
+
+
+            <label for="ahorradoMeta">
+                ¿Cuánto ya tenés?
+            </label>
+
+            <input
+                type="number"
+                id="ahorradoMeta"
+                placeholder="Ej: 100000"
+                min="0"
+            >
+
+
+            <button
+                id="guardarMeta"
+                class="boton-principal"
+            >
+                Crear meta
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL LÍMITE
+         ===================================================== -->
+
+    <div
+        id="modalLimite"
+        class="modal oculto"
+    >
+
+        <div class="modal-contenido">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        🚦 Nuevo límite
+                    </h2>
+
+                    <p>
+                        Elegí cuánto querés gastar
+                    </p>
+
+                </div>
+
+                <button id="cerrarLimite">
+                    ✕
+                </button>
+
+            </div>
+
+
+            <label for="nombreLimite">
+                Nombre
+            </label>
+
+            <input
+                type="text"
+                id="nombreLimite"
+                placeholder="Ej: Gastos del mes"
+            >
+
+
+            <label for="montoLimite">
+                Límite
+            </label>
+
+            <input
+                type="number"
+                id="montoLimite"
+                placeholder="Ej: 100000"
+                min="1"
+            >
+
+
+            <label for="tipoLimite">
+                Tipo
+            </label>
+
+            <select id="tipoLimite">
+
+                <option value="general">
+                    💰 Todos mis gastos
+                </option>
+
+                <option value="comida">
+                    🍔 Comida
+                </option>
+
+                <option value="transporte">
+                    🚌 Transporte
+                </option>
+
+                <option value="estudio">
+                    📚 Estudio
+                </option>
+
+                <option value="compras">
+                    🛍️ Compras
+                </option>
+
+                <option value="casa">
+                    🏠 Casa
+                </option>
+
+                <option value="ocio">
+                    🎮 Ocio
+                </option>
+
+                <option value="otro">
+                    📦 Otro
+                </option>
+
+            </select>
+
+
+            <button
+                id="guardarLimite"
+                class="boton-principal"
+            >
+                Guardar límite
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SCRIPT
+         ===================================================== -->
+
+    <script src="scrip.js"></script>
+    <script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker.register("./sw.js")
+                .then(() => {
+                    console.log("Vir App lista como PWA 💗");
+                })
+                .catch(error => {
+                    console.error("Error registrando PWA:", error);
+                });
+        });
+    }
+</script>
+
+</body>
+
+</html>
