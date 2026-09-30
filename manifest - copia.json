@@ -1,0 +1,10 @@
+{
+    "name": "Vir App",
+    "short_name": "Vir App",
+    "description": "Mi app personal de organización y finanzas 💗",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#f3f0f2",
+    "orientation": "portrait"
+}
